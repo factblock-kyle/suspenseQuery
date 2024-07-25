@@ -21,7 +21,7 @@
 - promise-based HTTP library
   - axios
 - date utility library
-  - Dayjs
+  - Dayjs (momentjs 금지)
 - i18n library
   - next-intl
 - testing library
@@ -58,7 +58,7 @@
 - \_typings
   - type 관련 폴더 (굳이 Type, Interface 두 개 나눌 필요까진 없어보입니다.)
 - \_utils
-  - 프로젝트 전체에서 사용될 수 있는 utility 함수, 그러나 hooks, api 포함 x
+  - 프로젝트 전체에서 사용될 수 있는 utility 함수. hooks, api 포함 x
   - ex: keysToCamelCase, 데이터 변환 함수, 엑셀 다운로드 함수
 - \_libs
   - Third party library setting 관련 파일들 넣는 곳
@@ -69,3 +69,8 @@
 #### 폴더에 \_ 붙이는 이유
 
 - non-routes 구분하려고 (https://stackoverflow.com/questions/76214501/nextjs-13-folder-structure-best-practice)
+
+#### Stack 관련 참고 글
+
+- https://www.robinwieruch.de/react-starter/
+- https://www.robinwieruch.de/react-libraries/
