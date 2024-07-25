@@ -23,7 +23,7 @@
 - date utility library
   - Dayjs (momentjs 금지)
 - i18n library
-  - next-intl
+  - react-i18next
 - testing library
   - jest
 - formatting
