@@ -3,6 +3,7 @@ import '@styles/globals.css';
 
 import type { Metadata } from 'next';
 
+import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 import { dir } from 'i18next';
 import { Inter } from 'next/font/google';
 
@@ -29,6 +30,12 @@ export async function generateStaticParams() {
 export default function RootLayout({ children, params: { lng } }: LayoutProps) {
   return (
     <html lang={lng} dir={dir(lng)}>
+      {process.env.NEXT_PUBLIC_ENV === 'production' && (
+        <>
+          <GoogleTagManager gtmId="GTM-MGCWHGKJ" />
+          <GoogleAnalytics gaId="G-JC012MHMXM" />
+        </>
+      )}
       <body className={inter.className}>
         <Provider>{children}</Provider>
       </body>
