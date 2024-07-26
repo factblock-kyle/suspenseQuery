@@ -51,7 +51,7 @@
   - enum 관련
 - \_hooks
   - hook 관련(이전이랑 동일)
-- \_stores
+- \_store
   - zustand 관련
 - \_styles
   - styling 관련 셋팅 파일(globals.css.ts, reset.css)
