@@ -1,3 +1,6 @@
+import '@styles/reset.css';
+import '@styles/globals.css';
+
 import type { Metadata } from 'next';
 
 import { dir } from 'i18next';
