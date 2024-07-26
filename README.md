@@ -113,7 +113,8 @@ Branch Convention
 └── README.md
 ```
 
-Route folder에 components 넣지 마세요.
+- Route folder에 components 넣지 마세요.
+- component file의 경우, Pascal Case
 
 ---
 
@@ -123,5 +124,5 @@ Route folder에 components 넣지 마세요.
 
 ### i18n naming convention
 
-- kebab-case 사용
+- kebab-case 사용? (camelCase 쓸지 고민)
 - tree structure 사용 금지 (1:1 형식으로만)
