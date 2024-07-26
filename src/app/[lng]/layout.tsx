@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google';
 
 import { languages } from '@i18n/settings';
 
+import Provider from './provider';
+
 interface LayoutProps {
   children: React.ReactNode;
   params: { lng: string };
@@ -24,7 +26,9 @@ export async function generateStaticParams() {
 export default function RootLayout({ children, params: { lng } }: LayoutProps) {
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

@@ -20,6 +20,8 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/app/_components/*"],
+      "@query/*": ["src/app/_query/*"],
+      "@styles/*": ["src/app/_styles/*"],
       "@i18n/*": ["src/app/i18n/*"],
       "@/*": ["./*"]
     }

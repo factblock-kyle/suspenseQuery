@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.51.11",
+    "@tanstack/react-query-devtools": "^5.51.11",
     "accept-language": "^3.0.18",
     "i18next": "^23.12.2",
     "i18next-browser-languagedetector": "^8.0.0",
