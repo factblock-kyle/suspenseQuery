@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "download:i18n": "node src/app/i18n/translate/download.mjs",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,9 +16,13 @@
     "@vanilla-extract/css": "^1.15.3",
     "@vanilla-extract/next-plugin": "^2.4.3",
     "accept-language": "^3.0.18",
+    "dotenv": "^16.4.5",
+    "google-auth-library": "^9.12.0",
+    "google-spreadsheet": "^4.1.2",
     "i18next": "^23.12.2",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-resources-to-backend": "^1.2.1",
+    "mkdirp": "^3.0.1",
     "next": "14.2.5",
     "react": "^18",
     "react-cookie": "^7.2.0",
