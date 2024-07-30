@@ -15,13 +15,13 @@ interface ToastProps {
   isInitialOpen: boolean;
 }
 
-const Toast = ({
+export default function Index({
   message,
   duration = 3000,
   type = 'success',
   id,
   isInitialOpen,
-}: ToastProps) => {
+}: ToastProps) {
   const { removeToast, setIsInitialOpen } = useToastStore();
   const [isOpen, setIsOpen] = useState(true);
 
@@ -62,9 +62,7 @@ const Toast = ({
     </RToast.Root>,
     document.getElementById('toast-portal') || document.body,
   );
-};
-
-export default Toast;
+}
 
 // // 아이콘의 경우 디자인 확정 아니니 도입 x
 // const ToastIcon = ({ type }: { type?: ToastType }) => {

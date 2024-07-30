@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
 
@@ -18,19 +19,21 @@ interface ToastListState {
   setIsInitialOpen: (id: string, isInitialOpen: boolean) => void;
 }
 
-export const useToastStore = create<ToastListState>((set) => ({
-  toastList: [],
-  addToast: (toast: IToast) =>
-    set((state) => ({ toastList: [...state.toastList, toast] })),
-  removeToast: (id) =>
-    set((state) => ({
-      toastList: state.toastList.filter((t) => t.id !== id),
-    })),
-  reset: () => set({ toastList: [] }),
-  setIsInitialOpen: (id, isInitialOpen) =>
-    set((state) => ({
-      toastList: state.toastList.map((toast) =>
-        toast.id === id ? { ...toast, isInitialOpen } : toast,
-      ),
-    })),
-}));
+export const useToastStore = create<ToastListState>()(
+  devtools((set) => ({
+    toastList: [],
+    addToast: (toast: IToast) =>
+      set((state) => ({ toastList: [...state.toastList, toast] })),
+    removeToast: (id) =>
+      set((state) => ({
+        toastList: state.toastList.filter((t) => t.id !== id),
+      })),
+    reset: () => set({ toastList: [] }),
+    setIsInitialOpen: (id, isInitialOpen) =>
+      set((state) => ({
+        toastList: state.toastList.map((toast) =>
+          toast.id === id ? { ...toast, isInitialOpen } : toast,
+        ),
+      })),
+  })),
+);

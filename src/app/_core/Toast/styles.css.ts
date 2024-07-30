@@ -1,4 +1,4 @@
-import { style, keyframes, globalStyle } from '@vanilla-extract/css';
+import { style, keyframes } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 const slideIn = keyframes({
@@ -97,13 +97,13 @@ export const toastVariants = recipe({
   },
 });
 
-export const icon = style({});
-
-globalStyle(`${icon} > svg`, {
-  width: '20px',
-  height: '20px',
-  minWidth: '20px',
-  minHeight: '20px',
-  maxWidth: '20px',
-  maxHeight: '20px',
-});
+// export const icon = style({});
+//
+// globalStyle(`${icon} > svg`, {
+//   width: '20px',
+//   height: '20px',
+//   minWidth: '20px',
+//   minHeight: '20px',
+//   maxWidth: '20px',
+//   maxHeight: '20px',
+// });
