@@ -28,17 +28,12 @@
             "position": "before"
           },
           {
-            "pattern": "next",
-            "group": "external",
-            "position": "before"
-          },
-          {
             "pattern": "next/*",
             "group": "external",
             "position": "before"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react", "next/*", "next"],
+        "pathGroupsExcludedImportTypes": ["react", "next/*"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
