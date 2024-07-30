@@ -6,7 +6,7 @@
 - State Management: react-query(Server), zustand(Client)
 - Package Manager: npm
 - Auth: next-auth
-- CSS: vanilla-extract
+- CSS: vanilla-extract, @radix-ui
 - Promise-based HTTP: axios
 - Date Utility: Dayjs
 - Internalization: i18next
@@ -121,8 +121,20 @@ Branch Convention
 ### React-Query key naming convention
 
 - camelCase 사용
+- key name API와 매칭
+  - 추후 v2가 나올수도 있기에, v1도 붙이기.
+- Path parameter는 array, Query parameter는 object로
+- type 구분 (ex: string과 number)
+
+#### Example
+
+[GET] /v1/admin/community/suspend-log?event_id=1&community_id=4
+
+```
+['v1', 'admin', 'community', 'suspendLog', { 'eventId': 1, 'communityId': 4 }]
+```
 
 ### i18n naming convention
 
-- kebab-case 사용? (camelCase 쓸지 고민)
+- kebab-case 사용
 - tree structure 사용 금지 (1:1 형식으로만)
