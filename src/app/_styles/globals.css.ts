@@ -1,6 +1,15 @@
 'use client';
 
-import { globalStyle } from '@vanilla-extract/css';
+import { createGlobalTheme, globalStyle } from '@vanilla-extract/css';
+
+import { COLOR_TOKEN } from './colorToken';
+import { SPACE, Z_INDEX } from './constants';
+
+export const vars = createGlobalTheme(':root', {
+  color: COLOR_TOKEN,
+  zIndex: Z_INDEX,
+  space: SPACE,
+});
 
 globalStyle('textarea', {
   resize: 'none',
