@@ -20,7 +20,11 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/app/_components/*"],
+      "@context/*": ["src/app/_context/*"],
+      "@core/*": ["src/app/_core/*"],
+      "@hooks/*": ["src/app/_hooks/*"],
       "@query/*": ["src/app/_query/*"],
+      "@store/*": ["src/app/_store/*"],
       "@styles/*": ["src/app/_styles/*"],
       "@i18n/*": ["src/app/i18n/*"],
       "@/*": ["./*"]
