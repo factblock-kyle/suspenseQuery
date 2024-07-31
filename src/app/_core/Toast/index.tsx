@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import * as RToast from '@radix-ui/react-toast';
 import { createPortal } from 'react-dom';
 
-import { ToastType, useToastStore } from '@store/core/toast';
+import { ToastType, useToastStore } from '@store/core/toastStore';
 
 import * as S from './styles.css';
 

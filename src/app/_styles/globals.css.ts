@@ -22,6 +22,10 @@ globalStyle('button', {
   padding: '0',
 });
 
+globalStyle('button:disabled', {
+  cursor: 'default',
+});
+
 globalStyle('a', {
   textDecoration: 'none',
   color: 'inherit',

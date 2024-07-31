@@ -1,10 +1,9 @@
 import '@styles/reset.css';
 import '@styles/globals.css';
 
-import type { Metadata } from 'next';
-
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 import { dir } from 'i18next';
+import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { languages } from '@i18n/settings';

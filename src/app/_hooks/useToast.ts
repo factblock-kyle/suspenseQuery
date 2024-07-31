@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { ToastType, useToastStore } from '@store/core/toast';
+import { ToastType, useToastStore } from '@store/core/toastStore';
 
 const useToast = () => {
   const { addToast } = useToastStore();
