@@ -17,16 +17,18 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@components/*": ["src/app/_components/*"],
-      "@context/*": ["src/app/_context/*"],
-      "@core/*": ["src/app/_core/*"],
-      "@hooks/*": ["src/app/_hooks/*"],
-      "@query/*": ["src/app/_query/*"],
-      "@store/*": ["src/app/_store/*"],
-      "@styles/*": ["src/app/_styles/*"],
-      "@i18n/*": ["src/app/i18n/*"],
+      "@api/*": ["app/_api/*"],
+      "@components/*": ["app/_components/*"],
+      "@context/*": ["app/_context/*"],
+      "@core/*": ["app/_core/*"],
+      "@hooks/*": ["app/_hooks/*"],
+      "@query/*": ["app/_query/*"],
+      "@store/*": ["app/_store/*"],
+      "@styles/*": ["app/_styles/*"],
+      "@utils/*": ["app/_utils/*"],
+      "@i18n/*": ["app/i18n/*"],
       "@/*": ["./*"]
     }
   },
