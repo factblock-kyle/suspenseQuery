@@ -73,9 +73,10 @@ Branch Convention
 - \_\_mocks\_\_: test 관련
 - \_actions: api랑 엮여있는 함수(axios 관련)
 - \_assets: media 관련 파일(이미지, 비디오, 오디오, 폰트)
+- \_components: components 관련
+- \_constants: constant 관련
 - \_context: context, provider 관련 파일(zustand 쓰기에 가능한 지양)
 - \_core: Button, Avatar, Input 등 core 요소
-- \_components: components 관련
 - \_dto: API dto(response, request) 관련
 - \_enum: enum 관련
 - \_hooks: hook 관련

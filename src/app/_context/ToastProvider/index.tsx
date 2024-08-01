@@ -3,7 +3,7 @@
 import * as RToast from '@radix-ui/react-toast';
 
 import Toast from '@core/Toast';
-import { useToastStore } from '@store/core/toast';
+import { useToastStore } from '@store/core/toastStore';
 
 import * as S from './styles.css';
 

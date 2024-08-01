@@ -21,8 +21,11 @@
     "paths": {
       "@api/*": ["app/_api/*"],
       "@components/*": ["app/_components/*"],
+      "@constants/*": ["app/_constants/*"],
       "@context/*": ["app/_context/*"],
       "@core/*": ["app/_core/*"],
+      "@dto/*": ["app/_dto/*"],
+      "@enum/*": ["app/_enum/*"],
       "@hooks/*": ["app/_hooks/*"],
       "@query/*": ["app/_query/*"],
       "@store/*": ["app/_store/*"],

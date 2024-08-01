@@ -3,11 +3,12 @@ import { useMutation } from '@tanstack/react-query';
 import { postDescriptionImage } from '@/api/event/description-image';
 import useAuthAxios from '@hooks/useAuthAxios';
 
-const usePostEventDescriptionImage = () => {
+const usePostEventDescriptionImageQueryQuery = () => {
   const axiosInstance = useAuthAxios();
   return useMutation({
-    mutationFn: (body: FormData) => postDescriptionImage(body, axiosInstance),
+    mutationFn: (request: FormData) =>
+      postDescriptionImage(request, axiosInstance),
   });
 };
 
-export default usePostEventDescriptionImage;
+export default usePostEventDescriptionImageQueryQuery;

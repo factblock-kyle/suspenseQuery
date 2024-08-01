@@ -4,7 +4,7 @@ import { useCallback, useRef } from 'react';
 
 import ReactQuill from 'react-quill';
 
-import usePostEventDescriptionImage from '@query/event/usePostEventDescriptionImage';
+import usePostEventDescriptionImageQuery from '@query/event/usePostEventDescriptionImageQuery';
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -22,7 +22,7 @@ export default function Index({
   const reactQuillRef = useRef<ReactQuill>(null);
 
   const { mutateAsync: postEventDescriptionImage } =
-    usePostEventDescriptionImage();
+    usePostEventDescriptionImageQuery();
 
   // 임시로 지정
 

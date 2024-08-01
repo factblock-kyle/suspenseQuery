@@ -2,7 +2,7 @@ import { useCallback, useMemo, useRef } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { useModalStore } from '@store/core/modal';
+import { useModalStore } from '@store/core/modalStore';
 
 export const useModal = (providedModalName?: string) => {
   const modalNameRef = useRef<string>(providedModalName || uuidv4());
