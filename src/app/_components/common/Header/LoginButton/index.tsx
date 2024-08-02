@@ -2,12 +2,14 @@
 
 import { useMutation } from '@tanstack/react-query';
 import { createWeb3Modal, useWeb3Modal } from '@web3modal/wagmi/react';
-import { signOut, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { useDisconnect } from 'wagmi';
 
 import { postLogout } from '@/api/user/logout';
 import { siweConfig } from '@config/SIWE';
 import { config, metadata, projectId } from '@config/wagmi';
+
+import * as S from './styles.css';
 
 export default function LoginButton() {
   if (!projectId) throw new Error('Project ID is not defined');
@@ -27,6 +29,16 @@ export default function LoginButton() {
 
   const isAuthenticated = status === 'authenticated';
   const isLoading = status === 'loading';
+  const handleWeb2Login = async () => {
+    try {
+      await signIn('kakao', {
+        callbackUrl: '/',
+        redirect: false, // #552
+      });
+    } catch (err) {
+      await signOut(); // #552
+    }
+  };
   const handleLogOut = async () => {
     try {
       if (status === 'authenticated') {
@@ -41,18 +53,26 @@ export default function LoginButton() {
   if (isLoading) return <div>loading</div>;
   if (isAuthenticated)
     return (
-      <button type="button" onClick={handleLogOut}>
-        log out
-      </button>
+      <>
+        <div>{session.userId}</div>
+        <button type="button" onClick={handleLogOut}>
+          log out
+        </button>
+      </>
     );
   return (
-    <button
-      type="button"
-      onClick={() => {
-        open();
-      }}
-    >
-      Login
-    </button>
+    <div className={S.container}>
+      <button
+        type="button"
+        onClick={() => {
+          open();
+        }}
+      >
+        Web3 Login
+      </button>
+      <button type="button" onClick={handleWeb2Login}>
+        Google Login
+      </button>
+    </div>
   );
 }

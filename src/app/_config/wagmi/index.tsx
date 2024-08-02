@@ -11,7 +11,7 @@ export const metadata = {
   description: 'Fablo Wallet connect',
   url: 'https://playfablo.com', // origin must match your domain & subdomain
   icons: [
-    `${process.env.NEXT_PUBLIC_FABLO_S3_BUCKET_URL}/web/'fablo-logo-beta.png`,
+    `${process.env.NEXT_PUBLIC_FABLO_S3_BUCKET_URL}/web/fablo-white-logo-beta.png`,
   ],
 };
 

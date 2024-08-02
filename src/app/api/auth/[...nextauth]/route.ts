@@ -151,13 +151,12 @@
         },
       async signIn({ account, user, credentials }) {
         let socialType = '';
-
         if (account?.provider === 'kakao') {
-        socialType = 'kakao';
+        socialType = 'Kakao';
         } else if (account?.provider === 'google') {
-        socialType = 'google';
+        socialType = 'Google';
         } else if (account?.provider === 'naver') {
-        socialType = 'naver';
+        socialType = 'Naver';
         } else if (account?.provider === 'crypto') {
         socialType = 'Metamask';
         }
