@@ -21,6 +21,7 @@
     "paths": {
       "@api/*": ["app/_api/*"],
       "@components/*": ["app/_components/*"],
+      "@config/*": ["app/_config/*"],
       "@constants/*": ["app/_constants/*"],
       "@context/*": ["app/_context/*"],
       "@core/*": ["app/_core/*"],

@@ -1,11 +1,17 @@
 import '@styles/reset.css';
 import '@styles/globals.css';
 
+import { headers } from 'next/headers';
+
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 import { dir } from 'i18next';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { cookieToInitialState } from 'wagmi';
 
+import { config } from '@config/wagmi';
+import AuthContext from '@context/AuthContext';
+import Web3ModalProvider from '@context/Web3Modal';
 import { languages } from '@i18n/settings';
 
 import Provider from './provider';
@@ -27,6 +33,12 @@ export async function generateStaticParams() {
 }
 
 export default function RootLayout({ children, params: { lng } }: LayoutProps) {
+  const Web3ModalInitialState = cookieToInitialState(
+    config,
+    headers().get('cookie'),
+  );
+  const authUrl = process.env.NEXT_PUBLCI_NEXTAUTH_URL;
+
   return (
     <html lang={lng} dir={dir(lng)}>
       {process.env.NEXT_PUBLIC_ENV === 'production' && (
@@ -36,7 +48,11 @@ export default function RootLayout({ children, params: { lng } }: LayoutProps) {
         </>
       )}
       <body className={inter.className}>
-        <Provider>{children}</Provider>
+        <Web3ModalProvider initialState={Web3ModalInitialState}>
+          <AuthContext url={authUrl as string}>
+            <Provider>{children}</Provider>
+          </AuthContext>
+        </Web3ModalProvider>
       </body>
     </html>
   );
