@@ -10,6 +10,7 @@ import { Inter } from 'next/font/google';
 import { cookieToInitialState } from 'wagmi';
 
 import { config } from '@config/wagmi';
+import AuthContext from '@context/AuthContext';
 import Web3ModalProvider from '@context/Web3Modal';
 import { languages } from '@i18n/settings';
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children, params: { lng } }: LayoutProps) {
     config,
     headers().get('cookie'),
   );
+  const authUrl = process.env.NEXT_PUBLCI_NEXTAUTH_URL;
 
   return (
     <html lang={lng} dir={dir(lng)}>
@@ -47,7 +49,9 @@ export default function RootLayout({ children, params: { lng } }: LayoutProps) {
       )}
       <body className={inter.className}>
         <Web3ModalProvider initialState={Web3ModalInitialState}>
-          <Provider>{children}</Provider>
+          <AuthContext url={authUrl as string}>
+            <Provider>{children}</Provider>
+          </AuthContext>
         </Web3ModalProvider>
       </body>
     </html>
