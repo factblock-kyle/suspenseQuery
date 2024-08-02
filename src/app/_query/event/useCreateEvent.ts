@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 
 import { createEvent } from '@/api/event';
 import { CreateEventRequestDto } from '@dto/request/CreateEventRequestDto';
-import useAuthAxios from '@hooks/useAuthAxios';
+import useAuthAxios from '@hooks/auth/useAuthAxios';
 
 const useCreateEventQuery = () => {
   const axiosInstance = useAuthAxios();

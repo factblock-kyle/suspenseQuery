@@ -10,3 +10,8 @@ export type LoginResponseType = {
     message: string;
   };
   
+  export type PostRefreshTokenArgsType = {
+    userId: number;
+    accessToken: string;
+    refreshToken: string;
+  };
