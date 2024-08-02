@@ -16,10 +16,10 @@ interface PaginationFilterState extends PaginationState {
   setOrderBy: (orderBy: any) => void;
 }
 
-const createPaginationStore = <T extends PaginationState>(
-  initialState: Omit<T, 'nextPage' | 'prevPage' | 'setPage'>,
+const createPaginationStore = (
+  initialState: Pick<PaginationState, 'page' | 'pageSize'>,
 ) =>
-  create<T>()(
+  create<PaginationState>()(
     devtools((set) => ({
       ...initialState,
       nextPage: () => set((state) => ({ page: state.page + 1 })),
@@ -28,13 +28,13 @@ const createPaginationStore = <T extends PaginationState>(
     })),
   );
 
-const createPaginationFilterStore = <T extends PaginationFilterState>(
-  initialState: Omit<
-    T,
-    'nextPage' | 'prevPage' | 'setPage' | 'setQuery' | 'setOrderBy'
+const createPaginationFilterStore = (
+  initialState: Pick<
+    PaginationFilterState,
+    'page' | 'pageSize' | 'orderBy' | 'query'
   >,
 ) =>
-  create<T>()(
+  create<PaginationFilterState>()(
     devtools((set) => ({
       ...initialState,
       nextPage: () => set((state) => ({ page: state.page + 1 })),
