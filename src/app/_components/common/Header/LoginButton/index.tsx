@@ -3,7 +3,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { createWeb3Modal, useWeb3Modal } from '@web3modal/wagmi/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { useDisconnect } from 'wagmi';
+import { useConnect, useDisconnect } from 'wagmi';
 
 import { postLogout } from '@/api/user/logout';
 import { siweConfig } from '@config/SIWE';
@@ -25,13 +25,13 @@ export default function LoginButton() {
   const { mutateAsync: logout } = useMutation({
     mutationFn: postLogout,
   });
-  const { disconnect } = useDisconnect();
-
+  const { disconnectAsync } = useDisconnect();
+  useConnect();
   const isAuthenticated = status === 'authenticated';
   const isLoading = status === 'loading';
-  const handleWeb2Login = async () => {
+  const handleWeb2Login = async (name: string) => {
     try {
-      await signIn('kakao', {
+      await signIn(name, {
         callbackUrl: '/',
         redirect: false, // #552
       });
@@ -42,14 +42,15 @@ export default function LoginButton() {
   const handleLogOut = async () => {
     try {
       if (status === 'authenticated') {
+        await disconnectAsync();
         await logout(session.accessToken);
-        disconnect();
       }
       await signOut({ redirect: true, callbackUrl: '/' });
     } catch (err) {
       console.error(err);
     }
   };
+
   if (isLoading) return <div>loading</div>;
   if (isAuthenticated)
     return (
@@ -70,8 +71,14 @@ export default function LoginButton() {
       >
         Web3 Login
       </button>
-      <button type="button" onClick={handleWeb2Login}>
+      <button type="button" onClick={() => handleWeb2Login('google')}>
         Google Login
+      </button>
+      <button type="button" onClick={() => handleWeb2Login('kakao')}>
+        Kakao Login
+      </button>
+      <button type="button" onClick={() => handleWeb2Login('naver')}>
+        Naver Login
       </button>
     </div>
   );
