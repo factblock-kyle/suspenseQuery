@@ -1,0 +1,71 @@
+name: NextJS Boilerplate Dev Workflow
+on:
+  push:
+    branches:
+      - develop
+
+# Concurrency group name ensures concurrent workflow runs wait for any in-progress job to finish
+concurrency:
+  group: merge-${{ github.ref }}
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout test2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Bolierplate APP to DEV environment
+    environment: dev
+    env:
+      AWS_IAM_ROLE_ARN: ${{ secrets.AWS_IAM_ROLE_ARN }}
+      NEXT_PUBLIC_URL: ${{ secrets.NEXT_PUBLIC_URL }}
+      NEXT_PUBLIC_DEV_ENDPOINT: ${{ secrets.NEXT_PUBLIC_DEV_ENDPOINT }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      NEXT_PUBLIC_FABLO_S3_BUCKET_URL: ${{ secrets.NEXT_PUBLIC_FABLO_S3_BUCKET_URL }}
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+      NEXT_PUBLIC_GOOGLE_CLIENT_SECRET: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET }}
+      NEXT_PUBLIC_KAKAO_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_KAKAO_CLIENT_ID }}
+      NEXT_PUBLIC_KAKAO_CLIENT_SECRET: ${{ secrets.NEXT_PUBLIC_KAKAO_CLIENT_SECRET }}
+      NEXT_PUBLIC_NAVER_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_NAVER_CLIENT_ID }}
+      NEXT_PUBLIC_NAVER_CLIENT_SECRET: ${{ secrets.NEXT_PUBLIC_NAVER_CLIENT_SECRET }}
+      NEXT_PUBLIC_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_PROJECT_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Cache Next.js build
+        uses: actions/cache@v3
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/next.config.js') }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
+          role-duration-seconds: 3600 #adjust as needed for your build time
+          aws-region: ap-northeast-2
+
+      - name: Use Node.JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy app
+        run: npx sst deploy --stage dev
