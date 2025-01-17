@@ -10,6 +10,5 @@ export function Banner() {
     community_id: undefined,
   };
   const { data } = useGetBanners(homeBannerPrams);
-  console.log(data);
-  return <div>Yo</div>;
+  return <div>First Query using Suspense</div>;
 }

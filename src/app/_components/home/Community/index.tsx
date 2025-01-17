@@ -6,5 +6,5 @@ import React from 'react';
 export default function Community() {
   const { data } = useGetCommunitiesForHome();
 
-  return <div>All</div>;
+  return <div>Second Query using Suspense</div>;
 }
