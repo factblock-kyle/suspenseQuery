@@ -2,21 +2,30 @@
 
 import { useState } from 'react';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import ToastProvider from '@context/ToastProvider';
-
-function Provider({ children }: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient());
+function Providers({ children }: React.PropsWithChildren) {
+  const [client] = useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false,
+          retry: 3,
+          refetchIntervalInBackground: false,
+          retryOnMount: false,
+        },
+      },
+    }),
+  );
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={client}>
       {children}
-      <ToastProvider />
+      {/* <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration> */}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
 
-export default Provider;
+export default Providers;
