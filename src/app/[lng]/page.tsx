@@ -1,5 +1,13 @@
-import Home from './home';
+import { Suspense } from 'react';
 
-export default async function Page() {
-  return <Home />;
+import { Banner } from '@components/home/Banner';
+import Community from '@components/home/Community';
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Banner />
+      <Community />
+    </Suspense>
+  );
 }
